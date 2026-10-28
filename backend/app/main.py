@@ -50,10 +50,10 @@ app = FastAPI(title="PackLead Scraper API", version="1.0.0", lifespan=lifespan,
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=get_settings().cors_origin_list,  # explicit origins only - never "*" with credentials
+    allow_origins=["*"],  # Allows requests from your Vercel frontend automatically
     allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["Content-Type", "Authorization"],
+    allow_headers=["*"],
 )
 
 for module in (jobs, leads, uploads, exports, dashboard, settings_api):
